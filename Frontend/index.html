@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product API Forms</title>
+  <script src="js/script.js" defer></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<table id="main_table">
+  <td id="form-td">
+
+    <h1>Product API Forms</h1>
+
+    <!-- GET Products -->
+    <h2>Get Products</h2>
+    Sort: <input type="text" name="sort" placeholder="-price"><br>
+    Filter: <input type="text" name="filter" placeholder="id[eq]=1"><br>
+    Page: <input type="number" name="page" value="1"><br>
+    Size: <input type="number" name="size" value="10"><br>
+    <button type="submit" id="getProdButton" onclick="getProducts()">Fetch</button>
+
+    <!-- POST Product -->
+    <h2>Add Product</h2>
+    <textarea id="productJson" placeholder='{"name": "string", "coordinates": {"x": 0, "y": 189}, "price": 0.01, "manufactureCost": 0, "unitOfMeasure": "METERS", "owner": {"name": "string", "birthday": "2025-02-21T08:15:48.840Z", "height": 1, "weight": 1, "location": {"x": 0, "y": 0, "name": "string"}}}'></textarea><br>
+    <button type="submit" id="b1" onclick="addProduct()">Submit</button>
+
+    <!-- GET Product by ID -->
+    <h2>Get Product by ID</h2>
+    ID: <input type="number" name="id" required><br>
+    <button type="submit" onclick="getProductById()">Fetch</button>
+
+    <!-- PUT Update Product -->
+    <h2>Update Product</h2>
+    ID: <input type="number" name="idUpdate" required><br>
+    <textarea id="updatedProduct" placeholder='{"name": "string", "coordinates": {"x": 0, "y": 189}, "price": 0.01, "manufactureCost": 0, "unitOfMeasure": "METERS", "owner": {"name": "string", "birthday": "2025-02-21T08:15:48.840Z", "height": 1, "weight": 1, "location": {"x": 0, "y": 0, "name": "string"}}}'></textarea><br>
+    <button type="submit" onclick="updateProduct()">Update</button>
+
+    <!-- DELETE Product -->
+      <h2>Delete Product</h2>
+      ID: <input type="number" name="idDelete" required><br>
+      <button type="submit" onclick="deleteProduct()">Delete</button>
+
+    <!-- DELETE Products by UnitOfMeasure -->
+      <h2>Delete Products by UnitOfMeasure</h2>
+      Unit: <input type="text" id="unitOfMeasureInput" name="unitOfMeasure" required><br>
+      <button type="submit" onclick="deleteProductsByUnit()">Delete</button>
+
+    <!-- GET Product with Min Price -->
+    <h2>Get Product with min price</h2>
+    <button type="submit" onclick="getProductWithMinPrice()">Fetch</button>
+
+    <!-- GET Count of Products by Manufacture Cost -->
+    <h2>Get Count of Products by Manufacture Cost</h2>
+    Cost: <input type="number" name="costManufacture" required><br>
+    <button type="submit" onclick="getCountByManufactureCost()">Fetch</button>
+
+    <h1>Ebay API Forms</h1>
+    <h2>Filter products by manufacturer (owner) id</h2>
+    Manufacturer (owner) id: <input type="number" id="ebay-id">
+    <br>
+    Page: <input type="number" id="page-ebay" value="1"><br>
+    Size: <input type="number" id="size-ebay" value="10"><br>
+    <button type="submit" onclick="getByManufacturer()">Fetch</button>
+
+    <h2>Find list of products with current unitOfMeasure</h2>
+    Unit: <input type="text" id="unitOfMeasureInput1" name="unitOfMeasure" required><br>
+    Page: <input type="number" id="page-ebay1" value="1"><br>
+    Size: <input type="number" id="size-ebay1" value="10"><br>
+    <button type="submit" onclick="getListWithCurrentUnit()">Fetch</button>
+
+
+  </td>
+  <td>
+    <h1>Результат</h1>
+    <div id="status-code"></div>
+    <div id="product-info"></div>
+    <table id="result-table"></table>
+  </td>
+</table>
+
+</body>
+</html>
+
+

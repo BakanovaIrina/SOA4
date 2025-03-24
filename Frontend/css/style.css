@@ -1,0 +1,98 @@
+body {
+  display: flex;
+  justify-content: center;  /* Выравнивание по горизонтали */
+  margin: 0;                /* Убираем отступы */
+}
+
+#main_table {
+  border-collapse: collapse; /* Убирает промежутки между ячейками */
+  width: 75%; /* Устанавливает ширину таблицы */
+  table-layout: fixed;
+  align-self: center;
+}
+
+#result-table {
+  border-collapse: collapse;
+  align-self: center;
+
+}
+
+table, th, td {
+  border: 2px solid red; /* Устанавливает красную границу */
+  background-color: #f2f2f2;
+}
+
+th, td {
+  padding: 8px; /* Добавляет отступы в ячейках */
+  text-align: center; /* Выравнивание текста по левому краю */
+  vertical-align: top;
+}
+
+#form-td {
+  width: 30%;
+}
+
+input[type="text"], input[type="number"] {
+  width: 30%;              /* Полная ширина для полей ввода */
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Стили для текстового поля */
+textarea {
+  width: 60%;               /* Заполнение всей доступной ширины */
+  height: 180px;             /* Высота текстового поля */
+  padding: 10px;             /* Отступы внутри поля */
+  border: 2px solid #ccc;   /* Граница */
+  border-radius: 8px;       /* Закругленные углы */
+  font-size: 16px;           /* Размер шрифта */
+  font-family: Arial, sans-serif; /* Шрифт */
+  background-color: #f9f9f9; /* Цвет фона */
+  resize: vertical;         /* Возможность изменять размер по вертикали */
+  transition: all 0.3s ease; /* Плавные переходы */
+}
+
+/* Стили при фокусировке на textarea */
+textarea:focus {
+  border-color: red;     /* Зеленая граница при фокусировке */
+  background-color: #fff;    /* Белый фон при фокусировке */
+  box-shadow: 0 0 10px rgba(72, 168, 85, 0.5); /* Тень при фокусировке */
+  outline: none;             /* Убираем стандартную обводку */
+}
+
+
+#form-container {
+  width: 300px;             /* Ширина формы */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Основной стиль кнопки */
+button {
+  padding: 10px 20px;               /* Отступы */
+  font-size: 16px;                  /* Размер шрифта */
+  color: #fff;                      /* Цвет текста */
+  background-color: darkred;        /* Зеленый фон */
+  border: none;                     /* Убираем границу */
+  border-radius: 5px;               /* Закругленные углы */
+  cursor: pointer;                  /* Курсор в виде руки при наведении */
+  transition: all 0.3s ease;         /* Плавные переходы */
+}
+
+/* Эффект при наведении */
+button:hover {
+  background-color: #45a049;        /* Немного темнее при наведении */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень при наведении */
+}
+
+/* Эффект при нажатии */
+button:active {
+  background-color: #388e3c;        /* Еще темнее при нажатии */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Легкая тень при нажатии */
+}
+
+
