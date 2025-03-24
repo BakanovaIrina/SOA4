@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/soap"
+           xmlns:tns="http://example.com/soap"
+           elementFormDefault="qualified">
+    <!-- Coordinates -->
+    <xs:complexType name="Coordinates">
+        <xs:sequence>
+            <xs:element name="x" type="xs:double"/>
+            <xs:element name="y" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Location -->
+    <xs:complexType name="Location">
+        <xs:sequence>
+            <xs:element name="x" type="xs:double"/>
+            <xs:element name="y" type="xs:double"/>
+            <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Person -->
+    <xs:complexType name="Person">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="birthday" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="height" type="xs:long"/>
+            <xs:element name="weight" type="xs:long"/>
+            <xs:element name="location" type="tns:Location" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Product -->
+    <xs:complexType name="Product">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="coordinates" type="tns:Coordinates"/>
+            <xs:element name="creationDate" type="xs:dateTime"/>
+            <xs:element name="price" type="xs:double"/>
+            <xs:element name="manufactureCost" type="xs:int"/>
+            <xs:element name="unitOfMeasure" type="tns:UnitOfMeasure"/>
+            <xs:element name="owner" type="tns:Person"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- UnitOfMeasure Enum -->
+    <xs:simpleType name="UnitOfMeasure">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="METERS"/>
+            <xs:enumeration value="LITERS"/>
+            <xs:enumeration value="GRAMS"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!--Manufacturer request -->
+    <xs:element name="manufacturerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manufacturerId" type="xs:int"/>
+                <xs:element name="page" type="xs:int"/>
+                <xs:element name="size" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!-- Definition for ListResponse -->
+    <xs:element name="listResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="products" type="Product" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="unitRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="unit" type="xs:string"/>
+                <xs:element name="page" type="xs:int"/>
+                <xs:element name="size" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:tns="http://example.com/soap"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             targetNamespace="http://example.com/soap">
+
+    <!-- Типы данных -->
+    <types>
+        <xsd:schema targetNamespace="http://example.com/soap"
+                    xmlns:tns="http://example.com/soap"
+                    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <!-- Описание всех типов из вашей схемы XSD -->
+            <xsd:include schemaLocation="service.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <!-- Сообщения -->
+    <message name="manufacturerRequest">
+        <part name="parameters" element="tns:manufacturerRequest"/>
+    </message>
+
+    <message name="listResponse">
+        <part name="parameters" element="tns:listResponse"/>
+    </message>
+
+    <message name="unitRequest">
+        <part name="parameters" element="tns:unitRequest"/>
+    </message>
+
+    <!-- Операции -->
+    <portType name="ProductServicePortType">
+        <operation name="getProductsByManufacturer">
+            <input message="tns:manufacturerRequest"/>
+            <output message="tns:listResponse"/>
+        </operation>
+        <operation name="getProductsByUnitOfMeasure">
+            <input message="tns:unitRequest"/>
+            <output message="tns:listResponse"/>
+        </operation>
+    </portType>
+
+    <!-- Привязка -->
+    <binding name="ProductServiceBinding" type="tns:ProductServicePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getProductsByManufacturer">
+            <soap:operation soapAction="http://example.com/soap/manufacturer"/>
+            <input>
+                <soap:body use="encoded" namespace="http://example.com/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://example.com/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="getProductsByUnitOfMeasure">
+            <soap:operation soapAction="http://example.com/soap/unit"/>
+            <input>
+                <soap:body use="encoded" namespace="http://example.com/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://example.com/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+
+    <!-- Сервис -->
+    <service name="ProductService">
+        <port name="ProductServicePort" binding="tns:ProductServiceBinding">
+            <soap:address location="http://localhost:8080/soap/products"/>
+        </port>
+    </service>
+
+</definitions>
